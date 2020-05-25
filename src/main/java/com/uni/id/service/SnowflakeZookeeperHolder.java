@@ -10,9 +10,6 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.RetryUntilElapsed;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -53,6 +50,7 @@ public class SnowflakeZookeeperHolder {
         this.snowflakeName = snowflakeName;
         this.host = host;
         this.port = port;
+        this.ip = ip;
         this.listenAddress = ip + ":" + port;
     }
 
@@ -64,7 +62,7 @@ public class SnowflakeZookeeperHolder {
             if (stat == null) {
                 // 不存在根节点,机器第一次启动,创建/snowflake/ip:port-000000000,并上传数据
                 zkAddressNode = createNode(curator);
-                // worker id 默认是0
+                // workerId默认是0
                 updateLocalWorkerId(workerId);
                 // 定时上报本机时间给forever节点
                 scheduledUploadData(curator, zkAddressNode);
