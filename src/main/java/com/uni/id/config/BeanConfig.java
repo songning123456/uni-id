@@ -1,7 +1,6 @@
 package com.uni.id.config;
 
 import com.uni.id.service.IdGeneratorService;
-import com.uni.id.service.SnowflakeZookeeperHolder;
 import com.uni.id.service.impl.SnowflakeIdGeneratorServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

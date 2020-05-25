@@ -1,5 +1,5 @@
 server:
-  port: 7083
+  port: 7084
 
 snowflake:
   name: test
