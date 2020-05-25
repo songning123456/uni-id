@@ -1,0 +1,8 @@
+server:
+  port: 7083
+
+snowflake:
+  name: test
+  zookeeper:
+    host: localhost
+    port: 2181
