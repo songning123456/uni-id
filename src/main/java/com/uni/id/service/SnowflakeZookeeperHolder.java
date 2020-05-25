@@ -1,7 +1,6 @@
 package com.uni.id.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSON;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -10,6 +9,7 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.RetryUntilElapsed;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -172,15 +172,13 @@ public class SnowflakeZookeeperHolder {
      *
      * @return
      */
-    private String buildData() throws JsonProcessingException {
+    private String buildData() {
         Endpoint endpoint = new Endpoint(ip, port, System.currentTimeMillis());
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.writeValueAsString(endpoint);
+        return JSON.toJSONString(endpoint);
     }
 
-    private Endpoint deBuildData(String json) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(json, Endpoint.class);
+    private Endpoint deBuildData(String json) {
+        return JSON.parseObject(json, Endpoint.class);
     }
 
     /**
