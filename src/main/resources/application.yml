@@ -1,8 +1,24 @@
 server:
   port: 7084
 
+dubbo:
+  application:
+    name: dubbo-provider
+  registry:
+    address: 192.168.0.110:2181
+    protocol: zookeeper
+    check: false
+  protocol:
+    name: dubbo
+    port: 30003
+  monitor:
+    protocol: register
+  consumer:
+    check: false
+    timeout: 12000
+
 snowflake:
-  name: test
+  name: snowflakeId
   zookeeper:
-    host: localhost
+    host: 192.168.0.110
     port: 2181
