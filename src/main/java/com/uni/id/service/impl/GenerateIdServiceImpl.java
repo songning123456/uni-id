@@ -8,8 +8,6 @@ import com.uni.id.service.IdGeneratorService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author songning

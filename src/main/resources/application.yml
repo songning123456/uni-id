@@ -1,2 +1,4 @@
 server:
   port: 7084
+  servlet:
+    context-path: /uni-id
